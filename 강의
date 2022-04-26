@@ -1,0 +1,26 @@
+### vscode 세팅
+# vscode 확장에서 eslint, prettier 설치
+# vscode 기본설정에서 default formatter를 prettier로 설정
+# vscode 기본설정에서 format on save 체크
+
+### react 설치
+# npx create-react-app react-app
+# npx은 npm의 상위버전
+# package.json : 설정파일
+# index.js : 시작점
+# import에 상대경로가 없는건 라이브러리. package.json > dependencies
+# 라이브러리는 node_modules에 있다.
+# .gitignore에 추가하면 git으로 관리를 안하는 파일
+# react는 single page application -> html은 하나지만 컴퍼넌트가 교체
+
+###JSX
+# === 비교
+# && : true일 경우 실행
+# || : falsy(거짓같은 값[false, 0, -0, null, undefined, NaN(Not a Number)])
+# ?? : 널 병합 연산자 -> null, undefined
+
+
+###component
+# 클래스형과 함수형 두 가지가 있다. 클래스형은 이제 사용권장하지 않는다.
+# 함수형 컴퍼너틑 state기능 및 라이프사이클 기능을 Hooks라는 기능이 추가되면서 함수형으로도 사용이 가능해졌다.
+
