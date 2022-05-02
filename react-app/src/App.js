@@ -1,9 +1,9 @@
-import JsxPractice from "./components/JsxPractice";
+import Average from "./components/Average";
 
 function App() {
   return (
     <>
-      <JsxPractice />
+      <Average />
     </>
   );
 }
