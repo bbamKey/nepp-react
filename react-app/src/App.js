@@ -1,9 +1,9 @@
-import StyledComponent from "./components/StyledComponent";
+import Comp from "./components/IterSample";
 
 function App() {
   return (
     <>
-      <StyledComponent />
+      <Comp />
     </>
   );
 }
