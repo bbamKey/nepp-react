@@ -1,4 +1,5 @@
 import { useState } from "react";
+import styles from "../App.css";
 
 // const userState = (init) => {
 //   let state = init;
@@ -28,16 +29,14 @@ const Counter = () => {
         +1
       </button>
       <button
-        onClick={() => {
-          setNumber2(number2 + 10);
-        }}
+        className={styles.button}
+        onClick={() => setNumber2(number2 + 10)}
       >
         +10
       </button>
       <button
-        onClick={() => {
-          setNumber3(number3 + 100);
-        }}
+        className={styles.button}
+        onClick={() => setNumber3(number3 + 100)}
       >
         +100
       </button>

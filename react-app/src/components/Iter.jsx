@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 
 const Iter = () => {
   const [names, setNames] = useState([
@@ -13,21 +13,23 @@ const Iter = () => {
   ]);
 
   const [str, setStr] = useState("");
-  const [nextId, setNextId] = useState(names.length + 1);
+  //const [nextId, setNextId] = useState(names.length + 1);
+  const nId = useRef(names.length + 1);
 
   const onChange = (e) => {
     setStr(e.target.value);
   };
 
   const onClick = (e) => {
-    console.log(str);
+    console.log(str, nId.current);
     //setNames([...setNames, str]);
     if (!str) return; //early 리턴 : 들여쓰기 방지, 불필요한 코드 미실행
 
-    const newNams = [...names, { id: nextId, text: str }];
+    const newNams = [...names, { id: nId.current, text: str }];
     setNames(newNams);
     setStr("");
-    setNextId(nextId + 1);
+    //setNextId(nextId + 1);
+    nId.current++;
   };
 
   const onDblClick = (deleteId) => {

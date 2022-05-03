@@ -29,9 +29,44 @@
 ###component state
 # 컴퍼넌트는 랜더링을 다시해야 바뀐 값이 반영된다
 # Hooks 중에 하나인 useState를 사용하여 재렌더링을 한다.
+# useState로 재렌덩이 되면서 Hooks로 선언된 변수가 아니면 초기화 된다
 
 
 ###js 원시타입, 참조타입 => 펼침연산자를 사용해야 참조타입 변수 복사 가능
 # object에 같은 key값으로 데이터가 추가된다면 덮어써진다 
 # const obj = { a: 1, b: 2, c: 2 };
 # const nObj = { ...obj, b: 10 }; // {a:1, c:2, b:10}
+
+
+###String Case
+# onClick 카멜 : 리액트 함수 변수 등
+# on_click 스네이크
+# OnClick 파스칼 : 리액트 jsx 명 등
+# ON_CLICK 
+
+###useEffect
+# return문이 clean up 이기때문에 early 리턴 사용불가
+# async도 사용 불가
+#
+# 두번째 인자에 빈 배열을 넣으면
+# 마운트될때 한번 실행
+# 마운트해제될때 클린업 함수 한번 실행
+
+###useReducer
+# Redux 패턴으로 만는 Hook
+
+###Redux
+# 상태 관리 라이브러리
+# UI action -> reduce -> Store 변화 -> 화면 변화
+
+###useCallback
+# 함수
+
+###useMemo
+# 값 변화
+
+###useRef
+# 랜더링이 되더라도 값이 변화되지 않음
+
+###Custom Hook
+# 공용js인데 Hook을 사용

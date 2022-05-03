@@ -4,6 +4,15 @@ const Info = () => {
   const [name, setName] = useState("");
   const [nick, setNick] = useState("");
 
+  /*
+    useEffect는
+    -return문이 clean up 이기때문에 early 리턴 사용불가
+    -async도 사용 불가
+
+    두번째 인자에 빈 배열을 넣으면
+    마운트될때 한번 실행
+    마운트해제될때 클린업 함수 한번 실행
+  */
   useEffect(() => {
     console.log("마운트 될 때 실행");
     console.log({ name, nick });

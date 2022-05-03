@@ -1,9 +1,9 @@
-import Average from "./components/Average";
+import StyledComponent from "./components/StyledComponent";
 
 function App() {
   return (
     <>
-      <Average />
+      <StyledComponent />
     </>
   );
 }

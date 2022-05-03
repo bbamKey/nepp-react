@@ -35,13 +35,12 @@ const Average = () => {
       <h1>Average.jsx</h1>
       <input value={number} onChange={onChange} ref={inputEl} />
       <button onClick={onInsert}>등록</button>
+      <b>평균값 : {avg}</b>
       <ul>
         {list.map((v, i) => (
           <li key={i}>{v}</li>
         ))}
       </ul>
-      <b>평균값:</b>
-      {avg}
     </>
   );
 };
