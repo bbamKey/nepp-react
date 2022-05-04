@@ -1,4 +1,4 @@
-import Comp from "./components/IterSample";
+import Comp from "./components/Todo/Template";
 
 function App() {
   return (
