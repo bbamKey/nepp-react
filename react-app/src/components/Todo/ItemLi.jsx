@@ -1,11 +1,16 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
-const ItemLi = ({ todo, onDelete }) => {
-  const { id, text } = todo;
+const ItemLi = ({ todo: { id, text, isChecked }, onDelete, onChecked }) => {
   return (
-    <Item>
+    <Item isChecked={isChecked}>
       <label>
-        <input type="checkbox" />
+        <input
+          type="checkbox"
+          chekced="{isChecked}"
+          onChange={(e) => {
+            onChecked(id, e.target.checked);
+          }}
+        />
         <Cont>
           [{id}] {text}
         </Cont>
@@ -27,6 +32,17 @@ const Item = styled.li`
   :nth-child(2n) {
     background: #efefef;
   }
+  background: ${({ isChecked }) => isChecked && "#007c44 !important"};
+
+  ${({ isChecked }) =>
+    isChecked &&
+    css`
+      background: #007c44;
+      ${Cont} {
+        color: #ddd;
+        text-decoration: line-through;
+      }
+    `}
 `;
 const Cont = styled.span`
   flex: 1;
