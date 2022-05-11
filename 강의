@@ -70,3 +70,6 @@
 
 ###Custom Hook
 # 공용js인데 Hook을 사용
+
+#wapper : 한 가지 요소
+#container : 여러가지 요소
