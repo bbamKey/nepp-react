@@ -2,8 +2,9 @@ import styled from "styled-components";
 import { useState } from "react";
 import useBodyOverflowHidden from "../../hooks/useBodyOverflowHidden";
 
-const ModalFirst = ({ onClose, onSubmit }) => {
+const ModalNickname = ({ onClose, onSubmit }) => {
   const [text, setText] = useState("");
+
   const handelSubmit = () => {
     onSubmit(text);
     onClose();
@@ -16,7 +17,7 @@ const ModalFirst = ({ onClose, onSubmit }) => {
       <Backdrop onClick={onClose} />
       <Container>
         <Header>
-          <Title>이름 바꾸기</Title>
+          <Title>닉네임 바꾸기</Title>
           <BtnClose onClick={onClose} />
         </Header>
         <Body>
@@ -117,4 +118,4 @@ const BtnConfirm = styled(Btn)`
   border-color: #0d6efd;
 `;
 
-export default ModalFirst;
+export default ModalNickname;

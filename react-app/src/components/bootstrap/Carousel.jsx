@@ -1,23 +1,47 @@
-import { useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import styled from "styled-components";
 import CarouselListOpacity from "./CarouselListOpacity";
 import CarouselListTrans from "./CarouselListTrans";
 
 const Carousel = ({ data, type }) => {
   const [activeIndex, setActiveIndex] = useState(0);
+  const [flag, setFlag] = useState(true);
 
-  const onChange = (i) => {
-    const firstIndex = 0;
-    const lastIndex = data.length - 1;
+  const onChange = useCallback(
+    (i) => {
+      if (!flag) return;
 
-    let nextIndex = activeIndex + i;
-    if (nextIndex > lastIndex) {
-      nextIndex = firstIndex;
-    } else if (nextIndex < 0) {
-      nextIndex = lastIndex;
-    }
-    setActiveIndex(nextIndex);
-  };
+      const firstIndex = 0;
+      const lastIndex = data.length - 1;
+
+      let nextIndex = activeIndex + i;
+      if (nextIndex > lastIndex) {
+        nextIndex = firstIndex;
+      } else if (nextIndex < 0) {
+        nextIndex = lastIndex;
+      }
+      console.log(nextIndex);
+      setActiveIndex(nextIndex);
+      setFlag(true);
+    },
+    [activeIndex, flag]
+  );
+
+  useEffect(() => {
+    setFlag(false);
+    setTimeout(() => {
+      setFlag(true);
+    }, 500);
+  }, [activeIndex]);
+
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      onChange(1);
+    }, 3000);
+    return () => {
+      clearTimeout(timeout);
+    };
+  }, [onChange]);
 
   return (
     <Body>
