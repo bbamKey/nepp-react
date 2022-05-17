@@ -76,4 +76,23 @@
 
 ### react router
 # npm i react-router-dom
-#
+
+### axios
+# npm i axios
+
+### 네이버 Open Api
+# 1. 핸드폰 인증
+# 2. 애플리케이션 등록
+#   이름 : 아무거나 
+#   사용API : 검색
+#   환경 : WEB
+#   URL : http://localhost:3000
+# 3. 클라이언트 정보
+#   ID : y1zcp2EQtTmL2Z7B2PGv
+#   Secret : ZDEqwYWQII
+
+### CORS
+# 해결
+#   1. 서버가 허용해준다.
+#   2. 서버를 직접 만들어서 서버에서 서버로 요청 : 프론트 -> 서버 -> open api
+#   3. proxy 
