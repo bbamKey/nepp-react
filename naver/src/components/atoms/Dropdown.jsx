@@ -1,8 +1,9 @@
 import styled, { css } from "styled-components";
 import { useState, useEffect, useRef } from "react";
 
-const Dropdown = ({ data, title }) => {
+const Dropdown = ({ data, title, onClick }) => {
   const [isShow, setIsShow] = useState(false);
+  const [name, setName] = useState(title);
   const wrapEl = useRef(null);
 
   useEffect(() => {
@@ -21,16 +22,19 @@ const Dropdown = ({ data, title }) => {
     setIsShow((prev) => !prev);
   };
 
-  const handleClick = (e) => {
+  const handleClick = (name, code) => {
     setIsShow((prev) => !prev);
+    setName(name);
+    onClick(code);
   };
 
   return (
     <Wrapper isShow={isShow} ref={wrapEl}>
-      <Button onClick={handleShow}>{title}</Button>
+      <Button onClick={handleShow}>{name}</Button>
       <Menu>
+        <Item onClick={() => handleClick("전체", "")}>전체</Item>
         {data.map(({ code, name }) => (
-          <Item key={code} onClick={() => handleClick(code)}>
+          <Item key={code} onClick={() => handleClick(name, code)}>
             {name}
           </Item>
         ))}
@@ -40,6 +44,7 @@ const Dropdown = ({ data, title }) => {
 };
 
 const Wrapper = styled.div`
+  width: 100%;
   display: inline-block;
   position: relative;
   ${({ isShow }) =>
@@ -63,7 +68,7 @@ const Button = styled.button`
   background: #198754;
   color: #fff;
   padding: 10px 12px;
-  font-size: 20px;
+  width: 100%;
   :after {
     display: inline-block;
     margin-left: 0.255em;
@@ -83,7 +88,7 @@ const Menu = styled.ul`
   padding: 0;
   border: 1px solid #ddd;
   border-radius: 4px;
-  width: 115px;
+  width: 100%;
   overflow: hidden;
   list-style: none;
   z-index: 1;

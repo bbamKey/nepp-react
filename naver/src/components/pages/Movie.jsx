@@ -1,49 +1,52 @@
 import styled from "styled-components";
 import { useEffect, useState } from "react";
 import { getMovies } from "../../apis";
+
 import MovieList from "../templates/movie/MovieList";
-import { countryList } from "../../datas/index";
-import Dropdown from "../atoms/Dropdown";
+import SearchForm from "../templates/movie/SearchForm";
 
 const Movie = () => {
-  const [search, setSearch] = useState("어벤져스");
   const [movies, setMovies] = useState([]);
+  const [params, setParams] = useState({
+    query: "",
+    country: "",
+  });
+  //const [query, setQuery] = useState("");
+  // const [country, setCountry] = useState("");
 
   useEffect(() => {
-    console.log(countryList);
-    refreshMoveis(search);
-  }, []);
+    refreshMoveis();
+  }, [params]);
 
-  const refreshMoveis = async (text) => {
-    const result = await getMovies(text);
-    console.log(result);
+  const handleChange = ({ name, value }) => {
+    const newParams = { ...params, [name]: value };
+    setParams(newParams);
+  };
+
+  const refreshMoveis = async () => {
+    const { query, country } = params;
+
+    if (!query) return;
+
+    if (params.country === "") {
+      delete params.country;
+    }
+
+    // const params = { query };
+    // if (country !== "") params.country = country;
+
+    const result = await getMovies(params);
     setMovies(result.items);
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    refreshMoveis(search);
-  };
-
   return (
-    <Layout>
-      <Title>Movie</Title>
-      <Form>
-        <Dropdown data={countryList} title="국가선택" />
-        {/* <Select>
-          {countryList.map(({ code, name }) => (
-            <Option value={code}>{name}</Option>
-          ))}
-        </Select> */}
-        <Input
-          value={search}
-          placeholder="영화 제목 입력"
-          onChange={(e) => setSearch(e.target.value)}
-        />
-        <button onClick={handleSubmit}>검색</button>
-      </Form>
-      <MovieList data={movies} />
-    </Layout>
+    <>
+      <Layout>
+        <Title>Movie</Title>
+        <SearchForm onChange={handleChange} />
+        <MovieList data={movies} />
+      </Layout>
+    </>
   );
 };
 
@@ -60,16 +63,6 @@ const Title = styled.div`
   text-align: center;
   font-size: 30px;
   font-weight: 800;
-`;
-const Form = styled.form`
-  height: 50px;
-`;
-const Select = styled.select`
-  height: 30px;
-`;
-const Option = styled.option``;
-const Input = styled.input`
-  height: 30px;
 `;
 
 export default Movie;
