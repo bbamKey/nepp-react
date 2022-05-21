@@ -7,6 +7,7 @@ const Dropdown = ({ data, title, onClick }) => {
   const wrapEl = useRef(null);
 
   useEffect(() => {
+    console.log("useEffect dropdown");
     const onClick = (e) => {
       if (!wrapEl.current.contains(e.target)) setIsShow(false);
       //if (e.target !== wrapEl.current) setIsShow(false);
@@ -19,6 +20,7 @@ const Dropdown = ({ data, title, onClick }) => {
 
   const handleShow = (e) => {
     e.preventDefault();
+    console.log("handleShow dropdown");
     setIsShow((prev) => !prev);
   };
 
@@ -45,6 +47,7 @@ const Dropdown = ({ data, title, onClick }) => {
 
 const Wrapper = styled.div`
   width: 100%;
+  height: 100%;
   display: inline-block;
   position: relative;
   ${({ isShow }) =>
@@ -69,6 +72,7 @@ const Button = styled.button`
   color: #fff;
   padding: 10px 12px;
   width: 100%;
+  height: 100%;
   :after {
     display: inline-block;
     margin-left: 0.255em;

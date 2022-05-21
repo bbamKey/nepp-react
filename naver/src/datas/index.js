@@ -1,3 +1,9 @@
+export const linkList = [
+  { link: "/", name: "메인" },
+  { link: "/moive", name: "영화" },
+  { link: "/book", name: "책" },
+];
+
 export const countryList = [
   { code: "KR", name: "한국" },
   { code: "US", name: "미국" },

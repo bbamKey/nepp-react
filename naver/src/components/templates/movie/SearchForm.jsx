@@ -8,7 +8,7 @@ const SearchForm = ({ onChange }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log({ name: "query", value: search });
+    console.log("handleSubmit", { name: "query", value: search });
     onChange({ name: "query", value: search });
   };
 
@@ -34,21 +34,24 @@ const SearchForm = ({ onChange }) => {
 };
 
 const Form = styled.form`
-  height: 50px;
+  height: 40px;
   display: flex;
   align-items: center;
 `;
 const FormLeft = styled.div`
   margin: 0 5px;
+  height: 100%;
+  width: 20vw;
 `;
 const FormRight = styled.div`
   flex-grow: 1;
   display: flex;
   justify-content: flex-end;
   align-items: center;
+  height: 100%;
 `;
 const Input = styled.input`
-  height: 39px;
+  height: 100%;
   margin: 0 5px;
   flex-grow: 1;
   border-radius: 4px;
@@ -66,8 +69,8 @@ const Button = styled.button`
   border: 1px solid #198754;
   border-radius: 4px;
   background-color: #198754;
-  width: 45px;
-  height: 45px;
+  width: 15vw;
+  height: 100%;
   margin: 0 5px;
 `;
 export default SearchForm;

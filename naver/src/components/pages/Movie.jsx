@@ -4,22 +4,27 @@ import { getMovies } from "../../apis";
 
 import MovieList from "../templates/movie/MovieList";
 import SearchForm from "../templates/movie/SearchForm";
+import Pagination from "../organisms/Pagination";
+
+const perPage = 10;
+const perBtn = 7;
 
 const Movie = () => {
   const [movies, setMovies] = useState([]);
+  const [page, setPage] = useState(1);
+  const [listSize, setListSize] = useState(0);
   const [params, setParams] = useState({
     query: "",
     country: "",
   });
-  //const [query, setQuery] = useState("");
-  // const [country, setCountry] = useState("");
 
   useEffect(() => {
     refreshMoveis();
-  }, [params]);
+  }, [params, page]);
 
   const handleChange = ({ name, value }) => {
     const newParams = { ...params, [name]: value };
+    setPage(1);
     setParams(newParams);
   };
 
@@ -28,15 +33,15 @@ const Movie = () => {
 
     if (!query) return;
 
-    if (params.country === "") {
+    if (country === "") {
       delete params.country;
     }
 
-    // const params = { query };
-    // if (country !== "") params.country = country;
+    params.start = (page - 1) * perPage + 1;
 
-    const result = await getMovies(params);
-    setMovies(result.items);
+    const { items, total } = await getMovies(params);
+    setListSize(total);
+    setMovies(items);
   };
 
   return (
@@ -45,17 +50,25 @@ const Movie = () => {
         <Title>Movie</Title>
         <SearchForm onChange={handleChange} />
         <MovieList data={movies} />
+        <Pagination
+          listSize={listSize}
+          perPage={perPage}
+          now={page}
+          perBtn={perBtn}
+          onSetPage={(val) => setPage(val)}
+        />
       </Layout>
     </>
   );
 };
 
 const Layout = styled.div`
-  padding: 10px;
   width: 100vw;
   display: flex;
   flex-direction: column;
+  min-height: 500px;
 `;
+
 const Title = styled.div`
   width: 100%;
   height: 50px;

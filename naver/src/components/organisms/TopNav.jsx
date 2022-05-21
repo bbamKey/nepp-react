@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import { NavLink, Outlet, useLocation } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { NavLink, Outlet } from "react-router-dom";
+import { linkList } from "../../datas";
 
 const TopNav = () => {
   //   const { pathname } = useLocation();
@@ -17,15 +17,11 @@ const TopNav = () => {
     <>
       <Container>
         <LinkList>
-          <Link to="/">
-            <BtnLink>메인</BtnLink>
-          </Link>
-          <Link to="/movie">
-            <BtnLink>영화</BtnLink>
-          </Link>
-          <Link to="/book">
-            <BtnLink>책</BtnLink>
-          </Link>
+          {linkList.map(({ link, name }) => (
+            <Link to={link} key={link}>
+              <BtnLink>{name}</BtnLink>
+            </Link>
+          ))}
         </LinkList>
       </Container>
       <Outlet />

@@ -21,7 +21,7 @@ const MovieList = ({ data }) => {
             <a href={link} target="_blank" rel="noreferrer">
               <Thumbnail src={image} />
               <Title dangerouslySetInnerHTML={{ __html: title }} />
-              <Title>{title.replace(/<[^>]*>?/g, "")}</Title>
+              {/* <Title>{title.replace(/<[^>]*>?/g, "")}</Title> */}
             </a>
           </Item>
         )
