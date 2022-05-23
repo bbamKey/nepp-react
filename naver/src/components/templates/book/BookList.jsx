@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 const BookList = ({ data }) => {
   return (
@@ -14,16 +15,16 @@ const BookList = ({ data }) => {
             title,
             image,
             link,
+            isbn,
           },
           i
         ) => (
-          <Item key={i}>
-            <a href={link} target="_blank" rel="noreferrer">
+          <Link to={`/book/${isbn.substring(11)}`} key={link}>
+            <Item key={i}>
               <Thumbnail src={image} />
-              <Title dangerouslySetInnerHTML={{ __html: title }} />
               <Title>{title.replace(/<[^>]*>?/g, "")}</Title>
-            </a>
-          </Item>
+            </Item>
+          </Link>
         )
       )}
     </List>

@@ -48,7 +48,7 @@ const Movie = () => {
     <>
       <Layout>
         <Title>Movie</Title>
-        <SearchForm onChange={handleChange} />
+        <SearchForm isDropdown={true} onChange={handleChange} />
         <MovieList data={movies} />
         <Pagination
           listSize={listSize}

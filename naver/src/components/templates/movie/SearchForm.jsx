@@ -1,30 +1,38 @@
 import styled from "styled-components";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { countryList } from "../../../datas/index";
 import Dropdown from "../../atoms/Dropdown";
 
-const SearchForm = ({ onChange }) => {
+const SearchForm = ({ initSearch, isDropdown, onChange }) => {
   const [search, setSearch] = useState("");
+
+  useEffect(() => {
+    console.log(isDropdown);
+    console.log(initSearch);
+    if (initSearch) setSearch(initSearch);
+  }, []);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("handleSubmit", { name: "query", value: search });
+    //console.log("handleSubmit", { name: "query", value: search });
     onChange({ name: "query", value: search });
   };
 
   return (
     <Form onSubmit={handleSubmit}>
-      <FormLeft>
-        <Dropdown
-          data={countryList}
-          title="선택"
-          onClick={(code) => onChange({ name: "country", value: code })}
-        />
-      </FormLeft>
+      {isDropdown && (
+        <FormLeft>
+          <Dropdown
+            data={countryList}
+            title="선택"
+            onClick={(code) => onChange({ name: "country", value: code })}
+          />
+        </FormLeft>
+      )}
       <FormRight>
         <Input
           value={search}
-          placeholder="영화 제목 입력"
+          placeholder="검색어 입력"
           onChange={(e) => setSearch(e.target.value)}
         />
         <Button>검색</Button>

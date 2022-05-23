@@ -1,6 +1,6 @@
 export const linkList = [
   { link: "/", name: "메인" },
-  { link: "/moive", name: "영화" },
+  { link: "/movie", name: "영화" },
   { link: "/book", name: "책" },
 ];
 
