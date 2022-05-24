@@ -97,3 +97,40 @@
 #   1. 목표서버에서 프론트엔드 도메인을 허용해준다.
 #   2. 서버를 직접 만들어서 서버에서 서버로 요청 : 프론트 -> 서버 -> open api
 #   3. proxy(webpack의 dev서버) 활용 : 개발에서만 사용 가능
+
+### REST API
+# 1. URI는 자원을 뜻한다.
+# URI (Uniform Resource Identifier) : 자원 식별자
+# URL (Uniform Resource Location) : 자원의 위치 ( nnn.com/index.html
+# URI > URL
+#
+# 2. method는 동작을 뜻한다.
+# GET : 가져온다
+#   /boards : 게시판 글 목록
+#   /boards/3 : 게시판의 id:3 의 상세 페이지
+# POST : 생성한다
+#   /boards : 게시판 글 생성
+# PATCH : 자원의 일부 정보를 수정한다
+#   /boards/3 : 3번 글의 상태를 변경한다
+# PUT : 자원의 전체적인 정보를 수정한다
+#   /boards/3 : 3번글의 제목, 내용 등을 모두 수정한다.
+# DELETE : 삭제한다
+#   /boards/3 : 3번글을 삭제한다
+# 
+# 3. 기타
+# - 소문자를 사용한다.
+# - 하이픈(-)을 사용한다.
+# - 마지막에 슬래시(/)를 사용하지 않는다.
+# - 복수형 명사를 사용한다.
+
+### node express
+# npm init
+# 
+# npm i nodemon 
+# packge.json "start": "nodemon src"
+#
+# npm i morgan
+#
+# npm i cors
+#
+# npm i mysql2

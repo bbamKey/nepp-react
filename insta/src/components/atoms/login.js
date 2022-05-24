@@ -54,13 +54,13 @@ export const FBLogin = styled.div`
   color: #385185;
   font-weight: bold;
   font-size: 14px;
-  margin-top: 30px;
+  margin-top: 20px;
   text-align: center;
   cursor: pointer;
 `;
 export const ForgotPassword = styled.div`
   font-size: 12px;
-  margin: 20px 0;
+  margin: 10px 0;
   text-align: center;
 `;
 
@@ -71,7 +71,7 @@ export const BtnSign = styled.button`
   border-radius: 4px;
   font-weight: bold;
   padding: 10px 9px;
-  margin-top: 16px;
+  margin: 16px 0;
   cursor: pointer;
 `;
 
