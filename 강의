@@ -126,6 +126,8 @@
 ### node express
 # npm init
 # 
+# npm i express
+#
 # npm i nodemon 
 # packge.json "start": "nodemon src"
 #
@@ -134,3 +136,7 @@
 # npm i cors
 #
 # npm i mysql2
+#
+# npm i bcyrpt
+#
+# npm i jsonwebtoken

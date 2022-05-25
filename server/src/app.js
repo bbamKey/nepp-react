@@ -7,9 +7,9 @@ import usersRouter from "./routes/users.js";
 
 const app = express();
 
-app.use(logger("dev"));
-app.use(express.json());
-app.use(cors(["http://localhost:3000"]));
+app.use(logger("dev")); //로그
+app.use(express.json()); //request body 인식
+app.use(cors(["http://localhost:3000"])); //CORS 허용
 
 app.use("/", indexRouter);
 app.use("/users", usersRouter);

@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import {
   Layout,
@@ -14,22 +14,31 @@ import {
 import { registUser } from "../../apis/user";
 
 const SignUp = () => {
+  const navigate = useNavigate("");
   const [form, setForm] = useState({});
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     if (!validate(form)) return;
 
-    registUser(form);
+    const { success, message } = await registUser(form);
+    console.log(success);
+
+    if (success) {
+      alert("환영합니다.");
+      navigate("/signin");
+    } else {
+      alert(message);
+      setForm((prev) => ({ ...prev, user_name: "" }));
+    }
   };
 
   const validate = ({ user_name, password, passwordConfirm }) => {
-    console.log(user_name, password, passwordConfirm);
     if (user_name.length < 4) {
       alert("아이디를 4자이상 입력해 주세요.");
       return false;
@@ -66,6 +75,8 @@ const SignUp = () => {
       alert("비밀번호를 확인해 주세요.");
       return false;
     }
+
+    return true;
   };
 
   return (
@@ -76,19 +87,28 @@ const SignUp = () => {
             <Logo src="https://www.instagram.com/static/images/web/logged_out_wordmark.png/7a252de00b20.png" />
           </LogoWrapper>
           <Form onSubmit={handleSubmit}>
-            <InputText name="name" placeholder="성명" onChange={handleChange} />
             <InputText
+              required
+              name="name"
+              placeholder="성명"
+              onChange={handleChange}
+            />
+            <InputText
+              required
+              value={form.user_name}
               name="user_name"
               placeholder="사용자 이름"
               onChange={handleChange}
             />
             <InputText
+              required
               name="password"
               type="password"
               placeholder="비밀번호"
               onChange={handleChange}
             />
             <InputText
+              required
               name="passwordConfirm"
               type="password"
               placeholder="비밀번호 확인"
