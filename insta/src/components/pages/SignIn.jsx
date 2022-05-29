@@ -15,26 +15,28 @@ import {
 } from "../atoms/login";
 import { getToken } from "../../apis/user";
 import instance from "../../apis";
+import { useSetRecoilState } from "recoil";
+import { loginState } from "../../stores";
 
 const SignIn = () => {
+  const setIsLogin = useSetRecoilState(loginState);
   const navigate = useNavigate();
   const [form, setForm] = useState({});
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     const { success, message, token } = await getToken(form);
-    console.log(success, message, token);
 
-    if (success) {
-      instance.defaults.headers.common["Authorization"] = token;
-      localStorage.token = token;
-      //navigate("/");
-    } else {
-      alert(message);
-    }
+    if (!success) alert(message);
+
+    instance.defaults.headers.common["Authorization"] = token;
+    localStorage.token = token;
+    setIsLogin(true);
+    navigate("/");
   };
 
   return (
