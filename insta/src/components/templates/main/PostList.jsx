@@ -17,15 +17,15 @@ const PostList = () => {
 
   return (
     <List>
-      {posts.map(({ imageList }) => (
-        <Item>
+      {posts.map(({ id, content, imageList }, j) => (
+        <Item key={j}>
           <Header></Header>
           <ImageList>
-            {imageList.map((image) => (
-              <Image src={image} />
+            {imageList.map((image, i) => (
+              <Image key={i} src={image} />
             ))}
           </ImageList>
-          <Content></Content>
+          <Content>{content}</Content>
         </Item>
       ))}
     </List>

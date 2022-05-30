@@ -1,13 +1,16 @@
 import styled from "styled-components";
 import { Link, Outlet } from "react-router-dom";
 
-import { ReactComponent as Home } from "../../assets/images/icons/home.svg";
-import { ReactComponent as Fly } from "../../assets/images/icons/fly.svg";
-import { ReactComponent as Plus } from "../../assets/images/icons/plus.svg";
-import { ReactComponent as Browser } from "../../assets/images/icons/browser.svg";
-import { ReactComponent as Heart } from "../../assets/images/icons/heart.svg";
+import { ReactComponent as ImgHome } from "../../assets/images/icons/home.svg";
+import { ReactComponent as ImgFly } from "../../assets/images/icons/fly.svg";
+import { ReactComponent as ImgPlus } from "../../assets/images/icons/plus.svg";
+import { ReactComponent as ImgBrowser } from "../../assets/images/icons/browser.svg";
+import { ReactComponent as ImgHeart } from "../../assets/images/icons/heart.svg";
+import ModalAddPost from "./ModalAddPost";
+import { useState } from "react";
 
 const Header = () => {
+  const [isModalAddPost, setIsModalAddPost] = useState(true);
   return (
     <>
       <Containter>
@@ -19,15 +22,28 @@ const Header = () => {
             <InputSearch />
           </Search>
           <Nav>
-            <Home />
-            <Fly />
-            <Plus />
-            <Browser />
-            <Heart />
+            <BtnNav>
+              <ImgHome />
+            </BtnNav>
+            <BtnNav>
+              <ImgFly />
+            </BtnNav>
+            <BtnNav>
+              <ImgPlus onClick={() => setIsModalAddPost(true)} />
+            </BtnNav>
+            <BtnNav>
+              <ImgBrowser />
+            </BtnNav>
+            <BtnNav>
+              <ImgHeart />
+            </BtnNav>
           </Nav>
         </Main>
       </Containter>
       <Outlet />
+      {isModalAddPost && (
+        <ModalAddPost onClose={() => setIsModalAddPost(false)} />
+      )}
     </>
   );
 };
@@ -53,5 +69,11 @@ const ImgLogo = styled.img``;
 const Search = styled.div``;
 const InputSearch = styled.input``;
 const Nav = styled.nav``;
+const BtnNav = styled.button`
+  border: none;
+  background: none;
+  cursor: pointer;
+  margin: 0 5px;
+`;
 
 export default Header;

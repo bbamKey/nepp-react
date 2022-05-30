@@ -140,3 +140,8 @@
 # npm i bcyrpt
 #
 # npm i jsonwebtoken
+#
+# npm i aws-sdk multer multer-s3
+# npm i aws-sdk
+# npm i multer
+# npm i multer-s3

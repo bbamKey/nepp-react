@@ -70,7 +70,7 @@ export const posetUsersToken = async (req, res) => {
     userId: user.id,
   };
   const option = {
-    expiresIn: "10s",
+    expiresIn: "1d",
   };
   const token = jwt.sign(payload, JWT_SECRET_KEY, option);
   // 토큰 발급 E
